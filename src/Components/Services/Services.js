@@ -5,10 +5,13 @@ import Glesses from "../../img/glasses.png"
 import Humble from "../../img/humble.png"
 import Card from '../Card/Card'
 import Resume from '../../resume.pdf'
+import { motion } from "framer-motion";
 
 export default function Services() {
+    const transition = { duration: 2, type: "spring" };
+
   return (
-    <div className="services">
+    <div className="services" id="Services">
       {/* left side */}
       <div className="awesome">
         <span>My Awesome</span>
@@ -22,20 +25,25 @@ export default function Services() {
         <a href={Resume} download>
           <button className="button s-button">Download Cv</button>
         </a>
-        
+
         <div className="blur s-blur1" style={{ background: "#abf1ff94" }}></div>
       </div>
       {/* right side */}
       <div className="cards">
-        <div style={{ left: "14rem" }}>
+        <motion.div
+          initial={{ left: "14rem" }}
+          whileInView={{ left: "25rem" }}
+          transition={transition}
+          style={{ left: "14rem" }}
+        >
           <Card
             emoji={HeartEmoji}
             heading={"Design"}
             detail={"Figma,Sketch,Photoshop,Adobe,Adobe xd"}
           />
-        </div>
+        </motion.div>
         {/* second card */}
-        <div style={{ top:'12rem',left: "-4rem" }}>
+        <div style={{ top: "12rem", left: "-4rem" }}>
           <Card
             emoji={Glesses}
             heading={"Developer"}
@@ -43,15 +51,13 @@ export default function Services() {
           />
         </div>
         {/* third card */}
-        <div style={{ top:'19rem',left: "12rem" }}>
+        <div style={{ top: "19rem", left: "12rem" }}>
           <Card
             emoji={Humble}
             heading={"UI/UX"}
             detail={"Lorem ispum dummy text are usually use in section"}
           />
         </div>
-
-
       </div>
     </div>
   );
